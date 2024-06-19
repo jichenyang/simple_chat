@@ -1,0 +1,96 @@
+### test connection
+get http://localhost:8000
+
+### test api/auth/signup
+post http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+  "fullName":"John Young",
+  "username":"johnyoung",
+  "password":"123456",
+  "confirm_password":"123456",
+  "gender":"male"
+}
+
+### signup Andrew
+post http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+  "fullName":"Andrew Young",
+  "username":"andrewyoung",
+  "password":"123456",
+  "confirm_password":"123456",
+  "gender":"male"
+}
+
+### signup Sira
+post http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+  "fullName":"Sira Young",
+  "username":"sirayoung",
+  "password":"123456",
+  "confirm_password":"123456",
+  "gender":"female"
+}
+
+### signup Jason
+post http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+  "fullName":"Jason Yougn",
+  "username":"jasonyoung",
+  "password":"123456",
+  "confirm_password":"123456",
+  "gender":"male"
+}
+
+### login Andrew
+post http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+  "username":"andrewyoung",
+  "password":"123456"
+}
+
+### login Sira
+post http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+  "username":"sirayoung",
+  "password":"123456"
+}
+
+### test api/auth/logout
+post http://localhost:8000/api/auth/logout
+Content-Type: application/json
+
+### test send message, login Andrew, send to Sira
+post http://localhost:8000/api/messages/send/6672d73960dfa7608537e601
+Content-Type: application/json
+
+{
+  "message":"Hello Sira, it is me Andrew."
+}
+
+### test send message, login Sira, send to Andrew
+post http://localhost:8000/api/messages/send/6672d2b89576455e1550cfac
+Content-Type: application/json
+
+{
+  "message":"Hello Andrew, it is Sira."
+}
+
+### test get messages, login Sira
+get http://localhost:8000/api/messages/6672d2b89576455e1550cfac
+Content-Type: application/json
+
+### test get userlist, login Sira
+get http://localhost:8000/api/users
+Content-Type: application/json
