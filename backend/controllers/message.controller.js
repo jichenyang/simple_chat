@@ -39,6 +39,11 @@ export const sendMessage = async (req, res) => {
     if(receiverSocketId) {
       io.to(receiverSocketId).emit('newMessage',newMessage)
     }
+    // send to original user as well
+    const receiverSocketId2 = getReceiverSocketId(senderId);
+    if(receiverSocketId2) {
+      io.to(receiverSocketId2).emit('newMessage',newMessage)
+    }
 
     res.status(201).json(newMessage)
 
