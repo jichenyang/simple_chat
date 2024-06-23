@@ -16,6 +16,13 @@ const useListenMessages = () => {
 
       // put new message to according to sender id
       let senderId = newMessage.senderId;
+      // if senderId is authUserId, it means the message was sent out from this user
+      // put the message into receiverId array
+      let receiverId = newMessage.receiverId;
+      if (senderId == authUser._id) {
+        senderId = receiverId
+        newMessage.shouldShake = false;
+      }
       let newMessageArray = [];
       if(senderId in userMessages){
         newMessageArray = userMessages[senderId].slice()

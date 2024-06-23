@@ -7,16 +7,9 @@ const useConversation = create((set,get)=>({
   setMessages: (messages)=>set({messages}),
   userMessages: {'111':['test']},
   setUserMessages: (userId, newMessageArray)=>{
-    // const oldUserMessages = get().userMessages;
-    // console.log('oldUserMessages', oldUserMessages)
-    // const oldMessages = oldUserMessages[userId] ? oldUserMessages[userId]:[]
-    // set({
-    //   userMessages: oldUserMessages? oldUserMessages[userId]?.concate([newMessage]):[newMessage]
-    // });
     set((state)=>({
       userMessages:{
         ...state.userMessages,
-        // [userId]: oldUserMessages[userId]? (oldMessages ? oldMessages.push(newMessage):[newMessage]) : [newMessage],
         [userId]: newMessageArray,
       }
     }));
